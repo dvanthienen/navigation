@@ -48,12 +48,15 @@ MapGenerator::MapGenerator(const std::string& default_map_name,
     as_(n_, action_name_,
         boost::bind(&MapGenerator::saveMapActionCallback, this, _1),
         false)
-{}
+{
+  as_.start();
+}
 
 MapGenerator::MapGenerator(const std::string& mapname) :
     mapname_(mapname),
     saved_map_(false),
     // TODO(@dvanthienen) How to get rid of this action server instance?
+    // Since the action server is not started, it can not be abused.
     as_(n_, "map_saver",
         boost::bind(&MapGenerator::saveMapActionCallback, this, _1),
         false)

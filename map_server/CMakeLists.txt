@@ -55,6 +55,13 @@ target_link_libraries(map_server-map_saver
     ${catkin_LIBRARIES}
     )
 
+add_executable(map_server-service_based_map_saver src/service_based_map_saver.cpp)
+set_target_properties(map_server-service_based_map_saver PROPERTIES OUTPUT_NAME service_based_map_saver)
+target_link_libraries(map_server-service_based_map_saver
+    map_generator
+    ${catkin_LIBRARIES}
+    )
+
 # copy test data to same place as tests are run
 function(copy_test_data)
     cmake_parse_arguments(PROJECT "" "" "FILES" ${ARGN})
