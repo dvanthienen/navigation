@@ -37,6 +37,9 @@ add_library(image_loader src/image_loader.cpp)
 target_link_libraries(image_loader SDL SDL_image ${Boost_LIBRARIES})
 
 add_library(map_generator src/map_generator.cpp)
+target_link_libraries(map_generator
+    ${catkin_LIBRARIES}
+    )
 
 add_executable(map_server src/main.cpp)
 target_link_libraries(map_server
